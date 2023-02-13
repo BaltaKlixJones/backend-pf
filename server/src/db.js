@@ -7,7 +7,6 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
 } = process.env;
 
-// const user = require("./models/UserModel.js")
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
   logging: false, // set to console.log to see the raw SQL queries
