@@ -15,10 +15,21 @@ const getAllClients = async () => {
 };
 
 const getClientByName = async (name) => {
-  const dbase = await Pokemon.findAll({
+  const lower = name.toLowerCase();
+
+  const dbase = await Client.findAll({
     where: { name: { [Op.iLike]: `%${name}%` } },
   });
-  return dbase;
+
+  const api = await getAllClients();
+
+  filteredApi = api.filter((client) => client.name == lower);
+
+  if (filteredApi.length === 0 && dbase.length === 0) {
+    return "No se Encontro el client";
+  }
+
+  return [...dbase, ...filteredApi];
 };
 
 const getClientById = async (id) => {
