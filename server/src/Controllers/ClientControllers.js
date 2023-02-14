@@ -1,3 +1,4 @@
+
 const { Client } = require("../db.js");
 const { Op } = require("sequelize");
 
@@ -50,3 +51,4 @@ module.exports = {
   getClientById,
   deleteCLient,
 };
+

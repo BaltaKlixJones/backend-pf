@@ -31,19 +31,20 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     description: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: null,
+      allowNull: true,
     },
     category: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     disponibility: {
-      type: DataTypes.DATE,
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
     }
   }, { timestamps: false});
 };

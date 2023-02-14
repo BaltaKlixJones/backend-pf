@@ -61,7 +61,7 @@ const getClientID = async (req, res) => {
 };
 
 const putClientHandler = () => {
-  // me parece que no sirve este metodo
+
 };
 
 module.exports = {

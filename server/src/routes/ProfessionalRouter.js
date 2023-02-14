@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const {
   getProfessionalHandler,
-  getByNameProfessionalHandler,
   getIDProfessionalHandler,
   deleteProfessionalHandler,
   postProfessionalHandler,
@@ -10,10 +9,9 @@ const {
 const professionalRouter = Router();
 
 professionalRouter.get("/", getProfessionalHandler);
-professionalRouter.get("/", getByNameProfessionalHandler);
 professionalRouter.get("/:id", getIDProfessionalHandler);
-professionalRouter.delete("/", deleteProfessionalHandler);
+professionalRouter.delete("/:id", deleteProfessionalHandler);
 professionalRouter.post("/", postProfessionalHandler);
-professionalRouter.put("/", putProfessionalHandler);
+professionalRouter.put("/:id", putProfessionalHandler);
 
 module.exports = professionalRouter;
