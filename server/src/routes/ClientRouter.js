@@ -3,10 +3,12 @@ const {
   deleteClientHandler,
   postClientHandler,
   putClientHandler,
+  getAllClientHandler
 } = require("../Handler/ClientHandler");
 const clientRouter = Router();
 
-clientRouter.delete("/", deleteClientHandler);
+clientRouter.get("/", getAllClientHandler);
+clientRouter.delete("/:id", deleteClientHandler);
 clientRouter.post("/", postClientHandler);
 clientRouter.put("/", putClientHandler);
 
