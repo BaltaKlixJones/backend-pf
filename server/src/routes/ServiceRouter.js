@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const {
   getServiceHandler,
-  getByNameServiceHandler,
+  getByIdServiceHandler,
   deleteServiceHandler,
   postServiceHandler,
   putServiceHandler,
@@ -9,9 +9,9 @@ const {
 const serviceRouter = Router();
 
 serviceRouter.get("/", getServiceHandler);
-serviceRouter.get("/", getByNameServiceHandler);
-serviceRouter.delete("/", deleteServiceHandler);
+serviceRouter.get("/:id", getByIdServiceHandler);
+serviceRouter.delete("/:id", deleteServiceHandler);
 serviceRouter.post("/", postServiceHandler);
-serviceRouter.put("/", putServiceHandler);
+serviceRouter.put("/:id", putServiceHandler);
 
 module.exports = serviceRouter;
