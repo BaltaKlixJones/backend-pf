@@ -48,7 +48,7 @@ const postClientHandler = async (req, res) => {
 
 const putClientHandler = () => {
  
-// me parece que no sirve este metodo
+// me parece que no sirve 
 };
 
 module.exports = {
