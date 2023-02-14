@@ -10,7 +10,7 @@ const turnRouter = Router();
 
 turnRouter.get("/", getTurnHandler);
 turnRouter.get("/:id", getIDTurnHandler);
-turnRouter.delete("/", deleteTurnHandler);
+turnRouter.delete("/:id", deleteTurnHandler);
 turnRouter.post("/", postTurnHandler);
 turnRouter.put("/", putTurnHandler);
 
