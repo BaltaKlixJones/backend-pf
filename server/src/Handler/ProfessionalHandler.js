@@ -4,7 +4,7 @@ const {
   getIDProfessionalController,
   deleteProfessionalController,
   postProfessionalController,
-  putProfessionalController
+  putProfessionalController,
 } = require("../Controllers/ProfessionalControllers.js");
 
 const getProfessionalHandler = async (req, res) => {
@@ -39,38 +39,6 @@ const deleteProfessionalHandler = async (req, res) => {
 };
 
 const postProfessionalHandler = async (req, res) => {
-    const {
-        name,
-        email,
-        password,
-        phone,
-        address,
-        description,
-        image,
-        category,
-        disponibility,
-      } = req.body;
-      
-  try {
-   const newProfessional = await postProfessionalController( name,
-    email,
-    password,
-    phone,
-    address,
-    description,
-    image,
-    category,
-    disponibility)
-      !newProfessional
-        ? res.status(400).json({ error: "Professional not created" })
-        : res.status(200).json({ message: "Professional created" })
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-const putProfessionalHandler = async (req, res) => {
-  const { id } = req.params;
   const {
     name,
     email,
@@ -80,20 +48,39 @@ const putProfessionalHandler = async (req, res) => {
     description,
     image,
     category,
+    disponibility,
   } = req.body;
+
   try {
-      await putProfessionalController(id,email,
-        password,
-        phone,
-        address,
-        description,
-        image,
-        category,)
+    const newProfessional = await postProfessionalController(
+      name,
+      email,
+      password,
+      phone,
+      address,
+      description,
+      image,
+      category,
+      disponibility
+    );
+    !newProfessional
+      ? res.status(400).json({ error: "Professional not created" })
+      : res.status(200).json({ message: "Professional created" });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const putProfessionalHandler = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await putProfessionalController(id, req.body);
     return res.status(200).json({ message: "Professional updated" });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
-}; 
+};
 
 module.exports = {
   getProfessionalHandler,

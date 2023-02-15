@@ -38,7 +38,7 @@ const postProfessionalController = async (
     !description ||
     !category
   ) {
-    throw Error ("Missing data");
+    throw Error("Missing data");
   }
   const professional = await Professional.create({
     name,
@@ -54,34 +54,30 @@ const postProfessionalController = async (
   return professional;
 };
 
-const putProfessionalController = async ( id, name,
-    email,
-    password,
-    phone,
-    address,
-    description,
-    image,
-    category,) => {
-        const professionalUpdate = await Professional.findByPk(id)
-        !professionalUpdate
-        ? res.status(400).json({ error: "Professional not found" })
-        : professionalUpdate.update({
-            name,
-            email,
-            password,
-            phone,
-            address,
-            description,
-            image,
-            category,
-    })
-    return professionalUpdate
-}
+const putProfessionalController = async (
+  id,
+  { name, email, password, phone, address, description, image, category }
+) => {
+  const professionalUpdate = await Professional.findByPk(id);
+  !professionalUpdate
+    ? res.status(400).json({ error: "Professional not found" })
+    : professionalUpdate.update({
+        name,
+        email,
+        password,
+        phone,
+        address,
+        description,
+        image,
+        category,
+      });
+  return professionalUpdate;
+};
 
 module.exports = {
   getProfessionalController,
   getIDProfessionalController,
   deleteProfessionalController,
   postProfessionalController,
-  putProfessionalController
+  putProfessionalController,
 };
