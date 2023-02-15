@@ -1,51 +1,39 @@
 const { Turn, Professional, Client, Service } = require("../db.js");
 
-
-const tableIncludedMap = async (tables) => {
-  const result = await tables.map((table) => {
-    return {
-      id: table.id,
-      date: table.date,
-      hour: table.hour,
-      status: table.status,
-      Professionals: table.Professionals[0],
-      Client: table.Clients[0],
-      Service: table.Services[0]
-    };
-  });
-  return result;
-};
-
+// const tableIncludedMap = async (tables) => {
+//   const result = await tables.map((table) => {
+//     return {
+//       id: table.id,
+//       date: table.date,
+//       hour: table.hour,
+//       status: table.status,
+//       Professionals: table.Professionals[0],
+//       Client: table.Clients[0],
+//       Service: table.Services[0]
+//     };
+//   });
+//   return result;
+// };
 
 const getAllTurns = async () => {
-  const results = await Turn.findAll({
-    include: [
-      {
-        model: Professional,
-        attributes: ["name", "id"],
-        through: {
-          attributes: [],
-        },
-      },
-      {
-        model: Client,
-        attributes: ["name", "id"],
-        through: {
-          attributes: [],
-        },
-      },
-      {
-        model: Service,
-        attributes: ["name", "id"],
-        through: {
-          attributes: [],
-        },
-      },
-    ],
-  });
+  const turns = await Turn.findAll();
 
-  const resultsClean = await tableIncludedMap(results)
-  return resultsClean
+  const modelsIncluded = await Promise.all(
+    turns.map(async (turn) => {
+      const professional = await Professional.findByPk(turn.ProfessionalId);
+      const service = await Service.findByPk(turn.ServiceId);
+      const client = await Client.findByPk(turn.ClientId);
+      return {
+        id: turn.id,
+        date: turn.date,
+        hour: turn.hour,
+        professionalID: professional.id,
+        service,
+        client,
+      };
+    })
+  );
+  return modelsIncluded;
 };
 
 const findById = async (id) => {
@@ -54,7 +42,13 @@ const findById = async (id) => {
   return turnID;
 };
 
-const createdTurn = async (date, hour, idProfessional, idClient, idService) => {
+const createdTurn = async ({
+  date,
+  hour,
+  ProfessionalId,
+  ClientId,
+  ServiceId,
+}) => {
   const turnExist = await Turn.findOne({ where: { date, hour } });
   if (turnExist) {
     throw new Error(`Turn isn´t available`);
@@ -62,24 +56,12 @@ const createdTurn = async (date, hour, idProfessional, idClient, idService) => {
   const turnCreated = await Turn.create({
     date,
     hour,
+    ProfessionalId,
+    ClientId,
+    ServiceId,
   });
 
-  const professionalDB = await Professional.findAll({
-    where: { id: idProfessional },
-  });
-  const clientDB = await Client.findAll({
-    where: { id: idClient },
-  });
-  const serviceDB = await Service.findAll({
-    where: { id: idService },
-  });
-  
-  turnCreated.addProfessional(professionalDB);
-  turnCreated.addClient(clientDB);
-  turnCreated.addService(serviceDB);
-
-  
-  return "Turn created successfully!";
+  return turnCreated;
 };
 
 const deleteTurn = async (id) => {
