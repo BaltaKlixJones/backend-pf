@@ -41,14 +41,14 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Professional, Client, Service, Turn } = sequelize.models;
 
 // Aca vendrian las relaciones
-Turn.hasOne(Professional);
-Professional.hasMany(Turn);
+Turn.belongsToMany(Professional, { through: 'TurnProfessional' });
+Professional.belongsToMany(Turn, { through: 'TurnProfessional' });
 
-Turn.hasOne(Service);
-Service.hasMany(Turn);
+Turn.belongsToMany(Client, { through: 'TurnClient' });
+Client.belongsToMany(Turn, { through: 'TurnClient' });
 
-Turn.hasOne(Client);
-Client.hasMany(Turn);
+Turn.belongsToMany(Service, { through: 'TurnService' });
+Service.belongsToMany(Turn, { through: 'TurnService' });
 
 Service.hasOne(Professional);
 Professional.hasMany(Service);

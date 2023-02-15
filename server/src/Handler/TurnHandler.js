@@ -26,8 +26,8 @@ const getIDTurnHandler = async (req, res) =>{
 
 const postTurnHandler = async (req, res)=>{
     try{
-        const {date, hour } = req.body
-        const newTurn = await createdTurn(date, hour)
+        const {date, hour, idProfessional, idClient, idService } = req.body
+        const newTurn = await createdTurn(date, hour, idProfessional, idClient, idService)
         res.send(newTurn)
       } catch(error){
           res.status(400).send({message: error.message})
