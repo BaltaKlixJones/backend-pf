@@ -54,7 +54,7 @@ const postProfessionalController = async (
 
 const putProfessionalController = async (
   id,
-  { name, email, password, phone, address, description, image, category }
+  { name, email, password, phone, address, description, category }
 ) => {
   const professionalUpdate = await Professional.findByPk(id);
   !professionalUpdate

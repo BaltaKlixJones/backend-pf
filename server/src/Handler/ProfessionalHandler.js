@@ -1,4 +1,4 @@
-const { Professional } = require("../db.js");
+
 const {
   getProfessionalController,
   getIDProfessionalController,
@@ -46,7 +46,6 @@ const postProfessionalHandler = async (req, res) => {
     phone,
     address,
     description,
-    image,
     category,
     disponibility,
   } = req.body;
@@ -59,7 +58,6 @@ const postProfessionalHandler = async (req, res) => {
       phone,
       address,
       description,
-      image,
       category,
       disponibility
     );
