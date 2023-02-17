@@ -25,7 +25,6 @@ const postProfessionalController = async (
   phone,
   address,
   description,
-  image,
   category,
   disponibility
 ) => {
@@ -47,7 +46,6 @@ const postProfessionalController = async (
     phone,
     address,
     description,
-    image,
     category,
     disponibility,
   });
@@ -68,7 +66,6 @@ const putProfessionalController = async (
         phone,
         address,
         description,
-        image,
         category,
       });
   return professionalUpdate;
