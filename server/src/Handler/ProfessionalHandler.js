@@ -1,4 +1,3 @@
-
 const {
   getProfessionalController,
   getIDProfessionalController,
@@ -48,6 +47,7 @@ const postProfessionalHandler = async (req, res) => {
     description,
     category,
     disponibility,
+    image
   } = req.body;
 
   try {
@@ -59,6 +59,7 @@ const postProfessionalHandler = async (req, res) => {
       address,
       description,
       category,
+      image,
       disponibility
     );
     !newProfessional
