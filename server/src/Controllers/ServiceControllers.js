@@ -14,12 +14,19 @@ const getByIdService = async (id) => {
   return idService;
 };
 
-const postService = async ({ name, price, description, duration }) => {
+const postService = async ({
+  name,
+  price,
+  description,
+  duration,
+  ProfessionalId,
+}) => {
   const clientCreate = await Service.create({
     name,
     price,
     description,
     duration,
+    ProfessionalId,
   });
 
   return clientCreate;

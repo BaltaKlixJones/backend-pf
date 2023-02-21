@@ -7,8 +7,8 @@ const {
 } = require("../Controllers/ServiceControllers");
 
 const postServiceHandler = async (req, res) => {
-  const { name, price, description, duration } = req.body;
-  if (!name || !price || !description || !duration) {
+  const { name, price, description, duration, ProfessionalId } = req.body;
+  if (!name || !price || !description || !duration || !ProfessionalId) {
     return res.status(400).json({ error: "Missing Data" });
   }
   try {
