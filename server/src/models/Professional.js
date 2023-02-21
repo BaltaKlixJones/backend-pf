@@ -34,7 +34,11 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    
+    image: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: 'https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg'
+    },
     category: {
       type: DataTypes.STRING,
       allowNull: false,
