@@ -24,10 +24,10 @@ const postProfessionalController = async (
   password,
   phone,
   address,
+  addresslocation,
   description,
   category,
   image,
-  addresslocation,
   disponibility
 ) => {
   if (
@@ -47,10 +47,10 @@ const postProfessionalController = async (
     password,
     phone,
     address,
+    addresslocation,
     description,
     category,
     image,
-    addresslocation,
     disponibility,
   });
   return professional;
@@ -69,10 +69,10 @@ const putProfessionalController = async (
         password,
         phone,
         address,
+        addresslocation,
         image,
         description,
-        category,
-        addresslocation
+        category
       });
   return professionalUpdate;
 };

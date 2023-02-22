@@ -44,11 +44,11 @@ const postProfessionalHandler = async (req, res) => {
     password,
     phone,
     address,
+    addresslocation,
     description,
     category,
     disponibility,
-    image,
-    addresslocation
+    image
   } = req.body;
 
   try {
@@ -58,10 +58,10 @@ const postProfessionalHandler = async (req, res) => {
       password,
       phone,
       address,
+      addresslocation,
       description,
       category,
       image,
-      addresslocation,
       disponibility,
     );
     !newProfessional
