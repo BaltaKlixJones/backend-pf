@@ -27,6 +27,7 @@ const postProfessionalController = async (
   description,
   category,
   image,
+  addressLocation,
   disponibility
 ) => {
   if (
@@ -49,6 +50,7 @@ const postProfessionalController = async (
     description,
     category,
     image,
+    addressLocation,
     disponibility,
   });
   return professional;
@@ -56,7 +58,7 @@ const postProfessionalController = async (
 
 const putProfessionalController = async (
   id,
-  { name, email, password, phone, address, description, category, image }
+  { name, email, password, phone, address, description, category, image, addressLocation }
 ) => {
   const professionalUpdate = await Professional.findByPk(id);
   !professionalUpdate
@@ -70,6 +72,7 @@ const putProfessionalController = async (
         image,
         description,
         category,
+        addressLocation
       });
   return professionalUpdate;
 };

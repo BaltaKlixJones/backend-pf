@@ -47,7 +47,8 @@ const postProfessionalHandler = async (req, res) => {
     description,
     category,
     disponibility,
-    image
+    image,
+    addressLocation
   } = req.body;
 
   try {
@@ -60,7 +61,8 @@ const postProfessionalHandler = async (req, res) => {
       description,
       category,
       image,
-      disponibility
+      disponibility,
+      addressLocation
     );
     !newProfessional
       ? res.status(400).json({ error: "Professional not created" })
