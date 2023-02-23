@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
       },
       dni: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
     },
     { timestamps: false }
