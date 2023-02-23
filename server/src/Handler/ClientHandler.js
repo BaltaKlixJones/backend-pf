@@ -38,7 +38,7 @@ const postClientHandler = async (req, res) => {
   try {
     const { name, email, dni } = req.body;
 
-    if (!name || !email || !dni) {
+    if (!name || !email) {
       return res.status(400).json({ error: "Missing Data" });
     }
     const clientCreate = await postClient(name, email, dni);
@@ -60,9 +60,7 @@ const getClientID = async (req, res) => {
   }
 };
 
-const putClientHandler = () => {
-
-};
+const putClientHandler = () => {};
 
 module.exports = {
   deleteClientHandler,
