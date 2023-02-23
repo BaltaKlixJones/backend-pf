@@ -48,7 +48,7 @@ const postProfessionalHandler = async (req, res) => {
     description,
     category,
     disponibility,
-    image
+    image,
   } = req.body;
 
   try {
@@ -62,11 +62,11 @@ const postProfessionalHandler = async (req, res) => {
       description,
       category,
       image,
-      disponibility,
+      disponibility
     );
     !newProfessional
       ? res.status(400).json({ error: "Professional not created" })
-      : res.status(200).json({ message: "Professional created" });
+      : res.status(200).json(newProfessional);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
