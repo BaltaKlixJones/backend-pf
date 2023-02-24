@@ -21,6 +21,8 @@ module.exports = (sequelize) => {
       },
       status: {
         type: DataTypes.STRING,
+        defaultValue: true,
+        allowNull: false,
       },
     },
     { timestamps: false }
