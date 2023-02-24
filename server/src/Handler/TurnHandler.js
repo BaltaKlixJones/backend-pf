@@ -3,6 +3,7 @@ const {
   findById,
   createdTurn,
   deleteTurn,
+  putTurnController
 } = require("../Controllers/TurnControllers");
 
 const getTurnHandler = async (req, res) => {
@@ -48,7 +49,15 @@ const deleteTurnHandler = async (req, res) => {
   }
 };
 
-const putTurnHandler = async (req, res) => {};
+const putTurnHandler = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await putTurnController(id, req.body);
+    res.status(200).json({ message: "Turn updated" });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 module.exports = {
   getTurnHandler,
