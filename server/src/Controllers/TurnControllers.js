@@ -70,9 +70,22 @@ const deleteTurn = async (id) => {
   return turn;
 };
 
+const putTurnController = async (id,{status}) => {
+
+
+  const turnUpdated = await Turn.findByPk(id);
+  !turnUpdated ? 
+  res.status(400).json({ error: "Turn not found" })
+  : turnUpdated.update({status});
+
+  return turnUpdated;
+};
+
+
 module.exports = {
   getAllTurns,
   findById,
   createdTurn,
   deleteTurn,
+  putTurnController
 };
