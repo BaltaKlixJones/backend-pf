@@ -4,7 +4,10 @@ require("dotenv").config();
 
 const paymentRouter = Router();
 
-mercadopago.configure({ access_token: process.env.MERCADOPAGO_KEY });
+mercadopago.configure({
+  access_token:
+    "TEST-4120646656497606-022219-d8b0ae8d691ccb656719bbe1a741de4f-570372996",
+});
 
 paymentRouter.post("/", (req, res) => {
   const turn = req.body;
@@ -20,7 +23,7 @@ paymentRouter.post("/", (req, res) => {
     ],
     back_urls: {
       success: "http://localhost:3000/paymentApproved",
-      failure: "",
+      failure: "http://localhost:3000/paymentFailure",
       pending: "",
     },
     auto_return: "approved",
