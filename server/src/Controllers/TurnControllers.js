@@ -27,6 +27,7 @@ const getAllTurns = async () => {
         id: turn.id,
         date: turn.date,
         hour: turn.hour,
+        status: turn.status,
         professionalID: professional.id,
         service,
         client,
@@ -45,6 +46,7 @@ const findById = async (id) => {
 const createdTurn = async ({
   date,
   hour,
+  status,
   ProfessionalId,
   ClientId,
   ServiceId,
