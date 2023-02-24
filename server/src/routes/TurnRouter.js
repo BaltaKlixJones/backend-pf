@@ -12,6 +12,6 @@ turnRouter.get("/", getTurnHandler);
 turnRouter.get("/:id", getIDTurnHandler);
 turnRouter.delete("/:id", deleteTurnHandler);
 turnRouter.post("/", postTurnHandler);
-turnRouter.put("/", putTurnHandler);
+turnRouter.put("/:id", putTurnHandler);
 
 module.exports = turnRouter;

@@ -20,7 +20,8 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       status: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        defaultValue:true
       },
     },
     { timestamps: false }
