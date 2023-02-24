@@ -6,7 +6,7 @@ const paymentRouter = Router();
 
 mercadopago.configure({
   access_token:
-    "TEST-4120646656497606-022219-d8b0ae8d691ccb656719bbe1a741de4f-570372996",
+    process.env.MERCADOPAGO_KEY,
 });
 
 paymentRouter.post("/", (req, res) => {
