@@ -6,8 +6,7 @@ module.exports = (sequelize) => {
     "Professional",
     {
       id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true,
       },
@@ -44,7 +43,7 @@ module.exports = (sequelize) => {
       },
       addresslocation: {
         type: DataTypes.STRING,
-       allowNull: true,
+        allowNull: true,
       },
       category: {
         type: DataTypes.STRING,
