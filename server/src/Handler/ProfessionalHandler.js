@@ -39,7 +39,7 @@ const deleteProfessionalHandler = async (req, res) => {
 
 const postProfessionalHandler = async (req, res) => {
   const {
-    id,
+    firebaseId,
     name,
     email,
     password,
@@ -54,7 +54,7 @@ const postProfessionalHandler = async (req, res) => {
 
   try {
     const newProfessional = await postProfessionalController(
-      id,
+      firebaseId,
       name,
       email,
       password,

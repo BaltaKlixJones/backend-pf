@@ -19,7 +19,7 @@ const deleteProfessionalController = async (id) => {
 };
 
 const postProfessionalController = async (
-  id,
+  firebaseId,
   name,
   email,
   password,
@@ -32,7 +32,7 @@ const postProfessionalController = async (
   disponibility
 ) => {
   if (
-    !id ||
+    !firebaseId ||
     !name ||
     !email ||
     !password ||
@@ -44,7 +44,7 @@ const postProfessionalController = async (
     throw Error("Missing data");
   }
   const professional = await Professional.create({
-    id,
+    firebaseId,
     name,
     email,
     password,

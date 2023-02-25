@@ -7,8 +7,14 @@ module.exports = (sequelize) => {
     {
       id: {
         type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         primaryKey: true,
+      },
+      firebaseId: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        unique: true,
       },
       name: {
         type: DataTypes.STRING,
