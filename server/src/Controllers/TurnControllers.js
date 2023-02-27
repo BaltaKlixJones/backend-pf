@@ -83,11 +83,42 @@ const putTurnController = async (id,{status}) => {
   return turnUpdated;
 };
 
+/*------------------------------------------------------------ EMAIL ---------------------------------------------------------*/
+const nodemailer = require('nodemailer');
+
+const sendEmail = async (recipient, message) => {
+  try {
+    // Configuración del transportador de correo electrónico
+    let transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+        user: 'flexagenda1@gmail.com',
+        pass: 'FA2023henry'
+      }
+    });
+
+    // Opciones de correo electrónico
+    let mailOptions = {
+      from: 'flexagenda1@gmail.com',
+      to: recipient,
+      subject: "Confirmación de turnos. Flexagenda.",
+      html: message
+    };
+
+    // Envío del correo electrónico
+    let info = await transporter.sendMail(mailOptions);
+    console.log('Correo electrónico enviado: ', info.messageId);
+  } catch (error) {
+    console.log('Error al enviar el correo electrónico: ', error);
+  }
+};
+
 
 module.exports = {
   getAllTurns,
   findById,
   createdTurn,
   deleteTurn,
-  putTurnController
+  putTurnController,
+  sendEmail
 };
