@@ -91,10 +91,11 @@ const sendEmail = async () => {
     // Configuración del transportador de correo electrónico
     let transporter = nodemailer.createTransport({
       host : 'smtp.gmail.com',
-      port : 587,
+      port : 465,
+      secure : true,
       auth: {
         user: 'flexagenda1@gmail.com',
-        pass: 'FA2023henry'
+        pass: 'swch iqnx bqlm iibd'
       }
     });
 
@@ -103,7 +104,7 @@ const sendEmail = async () => {
       from: 'flexagenda1@gmail.com',
       to: `acunamelina2201@gmail.com`,
       subject: "Confirmación de turnos. Flexagenda.",
-      html: `anda todo okk`
+      text: `anda todo okk`
     };
 
     // Envío del correo electrónico
@@ -121,5 +122,5 @@ module.exports = {
   createdTurn,
   deleteTurn,
   putTurnController,
-  sendEmail
+  sendEmail,
 };
