@@ -28,17 +28,19 @@ const getIDTurnHandler = async (req, res) => {
 };
 
 const postTurnHandler = async (req, res) => {
-
   try {
     const newTurn = await createdTurn(req.body);
-    await sendEmail(`${newTurn.ClientId.email}`, 
-      `Le confirmamos el turno del dia ${newTurn.date} a las ${newTurn.hour}hs para el servicio ${newTurn.service.name} con el precio de ${newTurn.service.price} pesos con una duración de ${newTurn.service.duration}hs, 
+    const turnos = await getAllTurns();
+    const turno = turnos.find(t => t.id == newTurn.id);
+    await sendEmail(`${turno.client.email}`, 
+      `Le confirmamos el turno del dia ${newTurn.date} a las ${newTurn.hour}hs para el servicio ${turno.service.name} con el precio de ${turno.service.price} pesos con una duración de ${turno.service.duration}hs, 
       en caso de que necesite cancelar o reprogramar su cita comuniquese con anticipación con el profesional`);
     res.send(newTurn);
   } catch (error) {
     res.status(400).send({ message: error.message });
   }
 };
+
 
 const deleteTurnHandler = async (req, res) => {
   const { id } = req.params;
