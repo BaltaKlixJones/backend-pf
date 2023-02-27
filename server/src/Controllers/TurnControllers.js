@@ -86,7 +86,7 @@ const putTurnController = async (id,{status}) => {
 /*------------------------------------------------------------ EMAIL ---------------------------------------------------------*/
 const nodemailer = require('nodemailer');
 
-const sendEmail = async () => {
+const sendEmail = async (receptor, mensaje) => {
   try {
     // Configuración del transportador de correo electrónico
     let transporter = nodemailer.createTransport({
@@ -102,9 +102,9 @@ const sendEmail = async () => {
     // Opciones de correo electrónico
     let mailOptions = {
       from: 'flexagenda1@gmail.com',
-      to: `acunamelina2201@gmail.com`,
+      to: receptor,
       subject: "Confirmación de turnos. Flexagenda.",
-      text: `anda todo okk`
+      text: mensaje,
     };
 
     // Envío del correo electrónico
