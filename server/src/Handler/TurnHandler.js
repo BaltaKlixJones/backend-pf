@@ -33,8 +33,7 @@ const postTurnHandler = async (req, res) => {
     const turnos = await getAllTurns();
     const turno = turnos.find(t => t.id == newTurn.id);
     await sendEmail(`${turno.client.email}`, 
-      `Le confirmamos el turno del dia ${newTurn.date} a las ${newTurn.hour}hs para el servicio ${turno.service.name} con el precio de ${turno.service.price} pesos con una duración de ${turno.service.duration}hs, 
-      en caso de que necesite cancelar o reprogramar su cita comuniquese con anticipación con el profesional`);
+      `Le confirmamos el turno del dia tal a la hora tal`);
     res.send(newTurn);
   } catch (error) {
     res.status(400).send({ message: error.message });
