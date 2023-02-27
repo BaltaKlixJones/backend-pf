@@ -31,7 +31,7 @@ const postTurnHandler = async (req, res) => {
 
   try {
     const newTurn = await createdTurn(req.body);
-    await sendEmail(`${newTurn.client.email}`, 
+    await sendEmail(`${newTurn.ClientId.email}`, 
       `Le confirmamos el turno del dia ${newTurn.date} a las ${newTurn.hour}hs para el servicio ${newTurn.service.name} con el precio de ${newTurn.service.price} pesos con una duración de ${newTurn.service.duration}hs, 
       en caso de que necesite cancelar o reprogramar su cita comuniquese con anticipación con el profesional`);
     res.send(newTurn);
