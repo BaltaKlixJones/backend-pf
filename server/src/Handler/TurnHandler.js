@@ -3,7 +3,8 @@ const {
   findById,
   createdTurn,
   deleteTurn,
-  putTurnController
+  putTurnController,
+  sendEmail
 } = require("../Controllers/TurnControllers");
 
 const getTurnHandler = async (req, res) => {
