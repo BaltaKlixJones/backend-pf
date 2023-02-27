@@ -30,7 +30,7 @@ const getIDTurnHandler = async (req, res) => {
 const postTurnHandler = async (req, res) => {
   try {
     const newTurn = await createdTurn(req.body);
-    await sendEmail(`acunamelina2201@gmail.com`, `anda todo okk`);
+    await sendEmail();
     res.send(newTurn);
   } catch (error) {
     res.status(400).send({ message: error.message });
