@@ -3,7 +3,8 @@ const {
   findById,
   createdTurn,
   deleteTurn,
-  putTurnController
+  putTurnController,
+  sendEmail
 } = require("../Controllers/TurnControllers");
 
 const getTurnHandler = async (req, res) => {
@@ -29,7 +30,7 @@ const getIDTurnHandler = async (req, res) => {
 const postTurnHandler = async (req, res) => {
   try {
     const newTurn = await createdTurn(req.body);
-    await sendEmail(newTurn.client.email, `El turno del dia ${newTurn.date} a las ${newTurn.hour}hs para el servicio ${newTurn.service.name} con el precio de ${newTurn.service.price} pesos con una duración de ${newTurn.service.duration}hs`);
+    await sendEmail(`acunamelina2201@gmail.com`, `anda todo okk`);
     res.send(newTurn);
   } catch (error) {
     res.status(400).send({ message: error.message });
