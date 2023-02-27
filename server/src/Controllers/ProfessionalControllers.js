@@ -59,7 +59,7 @@ const postProfessionalController = async (
   return professional;
 };
 
-const putProfessionalController = async ({
+const putProfessionalController = async (id, firebaseId,{
   name,
   email,
   password,
