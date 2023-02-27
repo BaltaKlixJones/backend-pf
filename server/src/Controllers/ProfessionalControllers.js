@@ -59,8 +59,9 @@ const postProfessionalController = async (
   return professional;
 };
 
-const putProfessionalController = async (id, firebaseId,
-  name,
+const putProfessionalController = async (
+  id,{
+  name ,
   email,
   password,
   phone,
@@ -69,7 +70,7 @@ const putProfessionalController = async (id, firebaseId,
   category,
   image,
   addresslocation,
-) => {
+  }) => {
   const professionalUpdate = await Professional.findByPk(id);
   !professionalUpdate
     ? res.status(400).json({ error: "Professional not found" })
