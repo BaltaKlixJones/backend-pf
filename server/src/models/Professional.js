@@ -59,6 +59,9 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
+      review: {
+        type: DataTypes.ARRAY(DataTypes.JSON),
+      }
     },
     { timestamps: false }
   );
