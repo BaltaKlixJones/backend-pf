@@ -70,6 +70,7 @@ const putProfessionalController = async (
   category,
   image,
   addresslocation,
+  disponibility
   }) => {
   const professionalUpdate = await Professional.findByPk(id);
   !professionalUpdate
@@ -84,6 +85,7 @@ const putProfessionalController = async (
         image,
         description,
         category,
+        disponibility
       });
   return professionalUpdate;
 };
