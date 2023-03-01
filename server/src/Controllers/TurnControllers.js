@@ -53,7 +53,7 @@ const createdTurn = async ({
 }) => {
   const turnExist = await Turn.findOne({ where: { date, hour } });
   if (turnExist) {
-    throw new Error(`Turn isn´t available`);
+    throw new Error(`Turn isnt available`);
   }
   const turnCreated = await Turn.create({
     date,
