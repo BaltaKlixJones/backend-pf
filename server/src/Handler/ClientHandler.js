@@ -36,12 +36,12 @@ const deleteClientHandler = async (req, res) => {
 
 const postClientHandler = async (req, res) => {
   try {
-    const { name, email, dni } = req.body;
+    const { name, email, password } = req.body;
 
     if (!name || !email) {
       return res.status(400).json({ error: "Missing Data" });
     }
-    const clientCreate = await postClient(name, email, dni);
+    const clientCreate = await postClient(name, email, password);
     clientCreate
       ? res.status(200).json({ message: "Client created" })
       : res.status(400).json({ error: "Client not created" });

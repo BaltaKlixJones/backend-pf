@@ -2,11 +2,11 @@
 const { Client } = require("../db.js");
 const { Op } = require("sequelize");
 
-const postClient = async (name, email, dni) => {
+const postClient = async (name, email, password) => {
   const newClient = await Client.create({
     name,
     email,
-    dni,
+    password,
   });
   return newClient;
 };
