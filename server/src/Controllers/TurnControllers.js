@@ -52,7 +52,7 @@ const createdTurn = async ({
   ServiceId,
 }) => {
   const turnExist = await Turn.findOne({ where: { date, hour } });
-  if (turnExist !== null) {
+  if (turnExist) {
     throw new Error(`Turn isnt available`);
   }
   const turnCreated = await Turn.create({
