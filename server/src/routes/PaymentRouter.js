@@ -22,8 +22,8 @@ paymentRouter.post("/", (req, res) => {
       },
     ],
     back_urls: {
-      success: "http://localhost:3000/paymentApproved",
-      failure: "http://localhost:3000/paymentFailure",
+      success: "https://flex-agenda.vercel.app/paymentApproved",
+      failure: "https://flex-agenda.vercel.app/paymentFailure",
       pending: "",
     },
     auto_return: "approved",
